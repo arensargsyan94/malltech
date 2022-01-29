@@ -1,0 +1,10 @@
+/**
+  Задача 6.
+ */
+SELECT from_, to_
+FROM
+     (SELECT id AS to_,
+             id - (id - LAG(id) OVER (ORDER BY id)) AS from_
+      FROM test
+      ORDER BY id) AS new_test
+WHERE to_ - from_ > 1

@@ -1,0 +1,35 @@
+/**
+  Задача 2.
+  А. Оптимизируйте структуру таблиц
+
+  Изменено 'customer_name' поле от VARCHAR(255) до VARCHAR(64)
+  Modified 'gender' поле от int(11) до tinyint
+  Modified 'book_title' field от VARCHAR(255) до VARCHAR(64)
+  Добавлен PRIMARY KEY (`id`) для таблице 'books'
+ */
+CREATE TABLE `customers`
+(
+    `id`            INT ( 11 ) NOT NULL AUTO_INCREMENT,
+    `customer_name` VARCHAR(64) DEFAULT NULL,
+    `gender`        TINYINT NOT NULL COMMENT '0 – пол не указан, 1 - юноша, 2 - девушка.',
+    `birth_date`    DATE    NOT NULL COMMENT 'День рождения',
+     PRIMARY KEY (`id`)
+);
+CREATE TABLE `books`
+(
+    `id`          INT ( 11 ) NOT NULL AUTO_INCREMENT,
+    `customer_id` INT ( 11 ) NOT NULL,
+    `book_title`  VARCHAR(64) DEFAULT NULL,
+     PRIMARY KEY (`id`)
+);
+
+/**
+  В. Напишите запрос, возвращающий имена и количества книг у юношей в возрасте от 15 до 20 лет
+ */
+SELECT c.customer_name, COUNT(customer_id)
+FROM books AS b
+         INNER JOIN customers as c ON b.customer_id = c.id
+WHERE c.gender = 1
+  AND (YEAR(DATE (NOW())) - YEAR (c.birth_date)) BETWEEN 15 AND 20
+GROUP BY customer_id
+
