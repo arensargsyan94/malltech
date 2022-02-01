@@ -16,7 +16,7 @@ function get_customers($customer_ids)
     foreach ($customer_ids as $key => $customer_id) {
 
         // To be sure that every value is integer
-        // and combine them all for not to call to to db for every single number
+        // and combine them all for not to call to db for every single number
         // and call one time for all numbers.
         // If we have empty values there is no need to open mysql connection and close it.
 
