@@ -3,8 +3,9 @@
   А. Оптимизируйте структуру таблиц
 
   Изменено 'customer_name' поле от VARCHAR(255) до VARCHAR(64)
-  Modified 'gender' поле от int(11) до tinyint
-  Modified 'book_title' field от VARCHAR(255) до VARCHAR(64)
+  Изменено 'gender' поле от int(11) до tinyint
+  Изменено 'book_title' field от VARCHAR(255) до VARCHAR(64)
+  Изменено 'birth_date' поле от int(11) до DATE
   Добавлен PRIMARY KEY (`id`) для таблице 'books'
  */
 CREATE TABLE `customers`
